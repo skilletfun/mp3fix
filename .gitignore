@@ -1,0 +1,7 @@
+build
+.venv
+.git
+.ruff_cache
+.mypy_cache
+music
+__pycache__
