@@ -39,17 +39,17 @@ def find_cover(folder: str) -> str | None:
 
 
 def print_songs_table(info: dict) -> None:
-    title_len = max(max(map(lambda x: len(x["title"].first), info.values())), 5) + 2
-    artist_len = max(max(map(lambda x: len(x["artist"].first), info.values())), 6) + 2
-    album_len = max(max(map(lambda x: len(x["album"].first), info.values())), 5) + 2
+    title_len = max(max(map(lambda x: len(str(x["title"].first)), info.values())), 5) + 2
+    artist_len = max(max(map(lambda x: len(str(x["artist"].first)), info.values())), 6) + 2
+    album_len = max(max(map(lambda x: len(str(x["album"].first)), info.values())), 5) + 2
 
     print(
         f"{blue('Title'.ljust(title_len), True)}{blue('Artist'.ljust(artist_len), True)}{blue('Album'.ljust(album_len), True)}{blue('Cover', True)}"
     )
     for tag in info.values():
-        _title = tag["title"].first.ljust(title_len)
-        _artist = tag["artist"].first.ljust(artist_len)
-        _album = tag["album"].first.ljust(album_len)
+        _title = str(tag["title"].first).ljust(title_len)
+        _artist = str(tag["artist"].first).ljust(artist_len)
+        _album = str(tag["album"].first).ljust(album_len)
         _has_cover = green("Yes") if tag["artwork"].first is not None else red("No")
         print(f"{_title}{_artist}{_album}{_has_cover}")
 
