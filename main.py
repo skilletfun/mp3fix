@@ -98,6 +98,7 @@ def main():
     replace_cover: bool = False
     new_cover = None
     if cover and ask("Use cover from folder? Y/n: ", True):
+        replace_cover = True
         with open(join(folder, cover), "rb") as fb:
             new_cover = fb.read()
 
@@ -148,7 +149,7 @@ Select fix: """)
         if new_album is not None:
             del tag["album"]
             tag["album"] = new_album or None
-
+        
         if replace_cover and new_cover:
             del tag["artwork"]
             tag["artwork"] = new_cover
